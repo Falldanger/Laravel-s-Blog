@@ -35,7 +35,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">{{$header}}</a>
+  <a class="navbar-brand" href="/">{{$header}}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -66,6 +66,20 @@
     </form>
   </div>
 </nav>
+
+@if(count($errors)>0)
+
+  <div class="alert alert-danger">
+    <ul>
+      @foreach($errors->all() as $error)
+      <li>
+        {{$error}}
+      </li>
+      @endforeach
+    </ul>
+  </div>
+
+@endif
 
 <!-- Підключаємо page.blade.php -->
 @yield('content')
