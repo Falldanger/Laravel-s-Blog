@@ -2,26 +2,16 @@
 
 @section('content')
 <main role="main">
-
-  <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <div class="container">
-      <h1 class="display-3">{{$header}}</h1>
-      <p>{{$message}}</p>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-    </div>
-  </div>
-
   <div class="container">
     <!-- Example row of columns -->
     <div class="row">
 
     @if($article)
     
-      <div>
-
-        <h2>{{$article->title}}</h2>
-        <p>{{$article->text}} </p>
+      <div style="margin-top:10px;">
+        <h2>{{$article->country}}, {{$article->place}}</h2>
+        <p><img src="../img/{{$article->image}}" width="700px" height="380px"></p>
+        <p style="font-size: 18px;">{!!$article->text!!}</p>
       </div>
 
       @endif
