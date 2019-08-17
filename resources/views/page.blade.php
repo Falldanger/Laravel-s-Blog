@@ -2,6 +2,8 @@
 
 @section('content')
 
+<script src="https://kit.fontawesome.com/96687dbbfc.js"></script>
+
 <main role="main">
 
   <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -21,22 +23,23 @@
 
         <h3><span style="font-size: 24px; font-weight: 700;">{{$article->country}}</span><span>, </span><span style="font-size: 21px;">{{$article->place}}</span></h3>
         <p><img src="../img/{{$article->image}}" width="100%" height="190px"></p>
-        <p style="height: 4.4em; /* exactly three lines */
-        overflow: hidden;
-text-overflow: ellipsis;
--webkit-line-clamp: 3;
-display: -webkit-box;
--webkit-box-orient: vertical;
-">{{$article->desc}}</p>
-        <p>Date of publication: <span style="font-weight: 600;"><?php echo date_format($article->updated_at,"d.m.Y"); ?></span></p>
-        <p><a class="btn btn-secondary" href="{{route('articleShow',['id'=>$article->id])}}" role="button">Learn more &raquo;</a></p>
+        <p style="overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        ">{{$article->desc}}</p>
+<!-- <i class="fas fa-trash"></i><i class="far fa-calendar-check"></i><i class="fas fa-trash-alt"></i><i class="far fa-calendar-alt"></i><i class="far fa-eye"></i> -->
+        <p>Date of publication: <span style="font-weight: 600;"><i class="far fa-calendar-check"> </i> <?php echo date_format($article->created_at,"d.m.Y");?></span></p>
+        <p>Views: <span style="font-weight: 600;"><i class="far fa-eye"> </i> <?php echo $article->views;?></span></p>
+        <p><a class="btn btn-secondary" href="{{route('articleShow',['id'=>$article->id])}}" role="button">Learn more <i class="fas fa-book-open"></i></a></p>
 
         <form action="{{route('articleDelete',['article'=>$article->id])}}" method="POST">
         <!-- <input type="hidden" name="_method" value="DELETE"> -->
         {{method_field('DELETE')}}
 
           <button type="submit" class="btn btn-danger">
-            Delete
+            Delete <i class="fas fa-trash-alt"></i>
           </button>
           @csrf
         </form>

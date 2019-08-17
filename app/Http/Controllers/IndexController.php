@@ -19,7 +19,7 @@ class IndexController extends Controller
 
     public function index(){
 
-    	$articles=Article::select(['id','country','place','image','desc','updated_at'])->get();
+    	$articles=Article::select(['id','country','place','image','desc','views','created_at'])->get();
 
     	//dump($articles);
 
@@ -28,8 +28,10 @@ class IndexController extends Controller
 
     public function show($id){
     	//$article=Article::find($id);
-    	$article=Article::select(['id','country','place','image','desc','text','updated_at'])->where('id',$id)->first();
-    	//dump($article);
+    	$article=Article::select(['id','country','place','image','desc','text','views','created_at'])->where('id',$id)->increment('views', 1);
+    	
+    	$article=Article::select(['id','country','place','image','desc','text','views','created_at'])->where('id',$id)->first();
+    	
     	return view('article-content')->with(['message'=>$this->message,'header'=>$this->header,'article'=>$article]);
     }
 

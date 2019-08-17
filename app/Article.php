@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     //
-    protected $fillable=['country','place','image','desc','text'];
+    protected $fillable=['country','place','image','desc','text','views'];
 }

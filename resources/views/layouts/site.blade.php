@@ -57,6 +57,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/page/add">Add new</a>
       </li>
+      <li class="nav-item" style="margin-left: 800px;">
+        <a class="nav-link" href="#">Authorization</a>
+      </li>
     </ul>
   </div>
 </nav>
