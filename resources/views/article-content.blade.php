@@ -1,6 +1,7 @@
 @extends('layouts.site')
 
 @section('content')
+<script src="https://kit.fontawesome.com/96687dbbfc.js"></script>
 <main role="main">
   <div class="container">
     <!-- Example row of columns -->

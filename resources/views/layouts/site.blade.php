@@ -9,6 +9,14 @@
     <title>Awesome places</title>
 
     <link rel="stylesheet" href="{{asset('css/jumbotron.css')}}">
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
 <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
@@ -29,6 +37,16 @@
           font-size: 3.5rem;
         }
       }
+    .dropdown-menu{
+        background-color:#343131;
+    }
+    a.dropdown-item:hover{
+      background-color: #343131;
+    }
+    li.nav-item>a.nav-link.disabled{
+        pointer-events: none;
+  cursor: default;
+    }
     </style>
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
@@ -54,12 +72,43 @@
       <li class="nav-item active">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
+    @guest
+    @if (Route::has('login'))
+    @endif
+    @else
       <li class="nav-item">
         <a class="nav-link" href="/page/add">Add new</a>
       </li>
-      <li class="nav-item" style="margin-left: 800px;">
-        <a class="nav-link" href="#">Authorization</a>
-      </li>
+      @endguest
+      </ul>
+    
+    <ul class="navbar-nav mr-right" style="margin-right: 10px;">
+      @guest
+                          @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}"><!-- <i class="far fa-user"></i> Log in  --><i class="fas fa-user-alt"></i> log in</a>
+                            </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown" style="margin-top:6px; text-align: center;">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        <span style="color:white;">{{ __('Logout') }}</span>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                          
+                        @endguest
     </ul>
   </div>
 </nav>

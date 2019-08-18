@@ -32,3 +32,7 @@ Route::delete('page/delete/{article}',function(\App\Article $article){
 	return redirect('/');
 
 })->name('articleDelete');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

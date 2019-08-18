@@ -34,6 +34,11 @@
         <p>Views: <span style="font-weight: 600;"><i class="far fa-eye"> </i> <?php echo $article->views;?></span></p>
         <p><a class="btn btn-secondary" href="{{route('articleShow',['id'=>$article->id])}}" role="button">Learn more <i class="fas fa-book-open"></i></a></p>
 
+        @guest
+        @if (Route::has('login'))
+        @endif
+        @else
+
         <form action="{{route('articleDelete',['article'=>$article->id])}}" method="POST">
         <!-- <input type="hidden" name="_method" value="DELETE"> -->
         {{method_field('DELETE')}}
@@ -43,6 +48,7 @@
           </button>
           @csrf
         </form>
+        @endguest
       </div>
 
     @endforeach
