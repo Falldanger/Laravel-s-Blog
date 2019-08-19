@@ -51,7 +51,6 @@
   				@csrf
   			</div>
   			</form>
-
   		<hr>
   </div>
 @endsection

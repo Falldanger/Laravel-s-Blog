@@ -32,12 +32,18 @@
 <!-- <i class="fas fa-trash"></i><i class="far fa-calendar-check"></i><i class="fas fa-trash-alt"></i><i class="far fa-calendar-alt"></i><i class="far fa-eye"></i> -->
         <p>Date of publication: <span style="font-weight: 600;"><i class="far fa-calendar-check"> </i> <?php echo date_format($article->created_at,"d.m.Y");?></span></p>
         <p>Views: <span style="font-weight: 600;"><i class="far fa-eye"> </i> <?php echo $article->views;?></span></p>
-        <p><a class="btn btn-secondary" href="{{route('articleShow',['id'=>$article->id])}}" role="button">Learn more <i class="fas fa-book-open"></i></a></p>
+        <p><a class="btn btn-success" href="{{route('articleShow',['id'=>$article->id])}}" role="button">Learn more <i class="fas fa-book-open"></i></a></p>
+        <p>
 
         @guest
         @if (Route::has('login'))
         @endif
         @else
+        
+        <a href="{{route('articleEdit',['id'=>$article->id])}}" class="btn btn-dark" style="color:white;">
+            Edit <i class="far fa-edit"></i>
+        </a>
+        </p>
 
         <form action="{{route('articleDelete',['article'=>$article->id])}}" method="POST">
         <!-- <input type="hidden" name="_method" value="DELETE"> -->
