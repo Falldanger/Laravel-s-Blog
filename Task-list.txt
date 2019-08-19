@@ -1,0 +1,2 @@
+Next update --> 
+1)Record sort function is required. Sorting should be done: by date of publication, by title, by number of views.
