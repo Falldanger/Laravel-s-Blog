@@ -16,6 +16,17 @@
   </div>
 
   <div class="container" style="margin-top: 14px;">
+
+    <p><b style="font-size: 18px;">Filter:</b>
+      <select id="cd-dropdown" class="cd-select" onchange="top.location=this.value" style="background-color: #343131; color:white; padding: 4px; border-radius: 4px; border-color: 1px solid black;">
+        <option class="cc" value="" selected="">Select your sort</option>
+        <option class="cc" value="/?id">By Id</option>
+        <option class="cc" value="/?views">By views</option>
+        <option class="cc" value="/?country">By country</option>
+        <option class="cc" value="/">Reset</option>
+      </select>
+    </p>
+  
     <!-- Example row of columns -->
     <div class="row">
     @foreach($articles as $article)
@@ -38,7 +49,8 @@
         @guest
         @if (Route::has('login'))
         @endif
-        @else
+        @elseif(Auth::user()->rank =='admin')
+
         
         <a href="{{route('articleEdit',['id'=>$article->id])}}" class="btn btn-dark" style="color:white;">
             Edit <i class="far fa-edit"></i>
@@ -60,6 +72,10 @@
     @endforeach
       
     </div>
+
+      <div class="col-md-12">
+          {{$articles->links()}}
+      </div>
 
     <hr>
 

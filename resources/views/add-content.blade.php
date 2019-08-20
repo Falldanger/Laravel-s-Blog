@@ -48,8 +48,8 @@
   				<div class="col-md-6" style="margin-top: 40px;">
   					<input type="submit" name="upload" style="width: 160px; height: 40px; background: #4682B4; color: white; font-weight: 600; border-radius: 8px; border-color: 2px solid #ADD8E6; text-align: center; vertical-align: center; padding-top: 4px;" value="Submit">
   				</div>
-  				@csrf
-  			</div>
+  				
+  			</div>@csrf
   			</form>
   		<hr>
   </div>

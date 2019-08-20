@@ -25,6 +25,10 @@
         pointer-events: none;
         cursor: default;
     }
+    ul.pagination{
+      padding-left:50%;
+      width: 20%;
+    }
 </style>
 </head>
 <body>
@@ -50,13 +54,17 @@
       <li class="nav-item">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
-      @guest
+
+    @guest
     @if (Route::has('login'))
     @endif
-    @else
+    @elseif(Auth::user()->rank =='admin')
+
+
       <li class="nav-item">
         <a class="nav-link" href="/page/add">Add new</a>
       </li>
+
       @endguest
     </ul>
     <ul class="navbar-nav mr-right" style="margin-right: 10px;">

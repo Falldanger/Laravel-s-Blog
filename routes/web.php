@@ -33,10 +33,10 @@ Route::delete('page/delete/{article}',function(\App\Article $article){
 
 })->name('articleDelete');
 
+Route::get('article/{id}/edit','IndexController@edit')->name('articleEdit');
+
+Route::get('page/{post}','IndexController@update')->name('articleUpdate');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('article/{id}/edit','IndexController@edit')->name('articleEdit');
-
-Route::post('page/{post}','IndexController@update')->name('articleUpdate');

@@ -20,9 +20,18 @@ class IndexController extends Controller
 	//Index page
     public function index(){
 
-    	$articles=Article::select(['id','country','place','image','desc','views','updated_at','created_at'])->get();
-
-    	//dump($articles);
+    	if(request()->has('id')){
+    		$articles=Article::orderBy('id','asc')->paginate(6)->appends('id',request('id'));
+    	}
+    	elseif(request()->has('views')){
+    		$articles=Article::orderBy('views','desc')->paginate(6)->appends('views',request('views'));
+    	}
+    	elseif(request()->has('country')){
+    		$articles=Article::orderBy('country','asc')->paginate(6)->appends('country',request('country'));
+    	}
+    	else{
+    		$articles=Article::orderBy('id','desc')->paginate(6);
+    	}
 
     	return view('page')->with(['message'=>$this->message,'header'=>$this->header,'articles'=>$articles]);
     }

@@ -47,6 +47,10 @@
         pointer-events: none;
   cursor: default;
     }
+    ul.pagination{
+    	padding-left:50%;
+    	width: 20%;
+    }
     </style>
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
@@ -75,7 +79,8 @@
     @guest
     @if (Route::has('login'))
     @endif
-    @else
+    @elseif(Auth::user()->rank =='admin')
+
       <li class="nav-item">
         <a class="nav-link" href="/page/add">Add new</a>
       </li>
