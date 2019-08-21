@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use Exception;
+use DB;
 
 class IndexController extends Controller
 {
@@ -19,21 +20,28 @@ class IndexController extends Controller
 
 	//Index page
     public function index(){
+    	$articles= new Article;
+    	$queries=[];
+    	$columns=['id','views','filter'];
+    	
+    	foreach ($columns as $column) {
+    		if(request()->has($column)){
+    			if(request('filter')){
+			        $articles=$articles->where(request('filter'), '>=',0);
+    				$queries[$column]=request($column);
+    			}	
+    		}
+    	}
 
-    	if(request()->has('id')){
-    		$articles=Article::orderBy('id','asc')->paginate(6)->appends('id',request('id'));
-    	}
-    	elseif(request()->has('views')){
-    		$articles=Article::orderBy('views','desc')->paginate(6)->appends('views',request('views'));
-    	}
-    	elseif(request()->has('country')){
-    		$articles=Article::orderBy('country','asc')->paginate(6)->appends('country',request('country'));
-    	}
-    	else{
-    		$articles=Article::orderBy('id','desc')->paginate(6);
+    	if(request()->has('sort')){
+    		$articles=$articles->orderBy(request('filter'), request('sort'));
+    		$queries['sort']=request('sort');
     	}
 
-    	return view('page')->with(['message'=>$this->message,'header'=>$this->header,'articles'=>$articles]);
+    	$articles=$articles->paginate(6)->appends($queries);
+
+    	return view('page',compact('articles'))->with(['message'=>$this->message,'header'=>$this->header,'articles'=>$articles]);
+    	
     }
 
     public function show($id){

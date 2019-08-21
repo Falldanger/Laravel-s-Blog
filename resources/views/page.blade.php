@@ -17,15 +17,23 @@
 
   <div class="container" style="margin-top: 14px;">
 
+  <div class="col-md-6">
     <p><b style="font-size: 18px;">Filter:</b>
       <select id="cd-dropdown" class="cd-select" onchange="top.location=this.value" style="background-color: #343131; color:white; padding: 4px; border-radius: 4px; border-color: 1px solid black;">
         <option class="cc" value="" selected="">Select your sort</option>
-        <option class="cc" value="/?id">By Id</option>
-        <option class="cc" value="/?views">By views</option>
-        <option class="cc" value="/?country">By country</option>
+        <option class="cc" value="/?filter=id">By Id</option>
+        <option class="cc" value="/?filter=views">By views</option>
+        <!-- <option class="cc" value="/?country">By country</option> -->
         <option class="cc" value="/">Reset</option>
       </select>
     </p>
+  </div>
+  <div class="col-md-6 text-right">
+    <p><b style="font-size: 18px;">Sort:</b>
+    <a href="{{route('user.index',['filter'=>request('filter'), 'sort'=>'asc'])}}">Ascending</a>
+    <a href="{{route('user.index',['filter'=>request('filter'), 'sort'=>'desc'])}}">Descending</a>
+    </p>
+  </div>
   
     <!-- Example row of columns -->
     <div class="row">
@@ -34,14 +42,15 @@
 
         <h3><span style="font-size: 24px; font-weight: 700;">{{$article->country}}</span><span>, </span><span style="font-size: 21px;">{{$article->place}}</span></h3>
         <p><img src="../img/{{$article->image}}" width="100%" height="190px"></p>
-        <p style="overflow: hidden;
+        <p style="height: 4.4em;
+        overflow: hidden;
         text-overflow: ellipsis;
         -webkit-line-clamp: 3;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         ">{{$article->desc}}</p>
 <!-- <i class="fas fa-trash"></i><i class="far fa-calendar-check"></i><i class="fas fa-trash-alt"></i><i class="far fa-calendar-alt"></i><i class="far fa-eye"></i> -->
-        <p>Date of publication: <span style="font-weight: 600;"><i class="far fa-calendar-check"> </i> <?php echo date_format($article->created_at,"d.m.Y");?></span></p>
+        <p>Date of publication: <span style="font-weight: 600;"><i class="far fa-calendar-check"> </i> <?php echo date_format (new DateTime($article->created_at), 'd-m-Y');?></span></p>
         <p>Views: <span style="font-weight: 600;"><i class="far fa-eye"> </i> <?php echo $article->views;?></span></p>
         <p><a class="btn btn-success" href="{{route('articleShow',['id'=>$article->id])}}" role="button">Learn more <i class="fas fa-book-open"></i></a></p>
         <p>
