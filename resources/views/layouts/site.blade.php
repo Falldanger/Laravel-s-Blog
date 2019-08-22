@@ -20,42 +20,87 @@
 
     <!-- Bootstrap core CSS -->
 <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+<!-- styles -->
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+.dropdown-menu{
+    background-color:#343131;
+}
+a.dropdown-item:hover{
+  background-color: #343131;
+}
+li.nav-item>a.nav-link.disabled{
+    pointer-events: none;
+cursor: default;
+}
+ul.pagination{
+	padding-left:50%;
+	width: 20%;
+}
+ul.cent{
+	vertical-align: center;
+text-align: center;
+align-items: center;
+}
+ul.cent>li.float-left{
+display: inline; /* Отображать как строчный элемент */
+margin-right: 5px; /* Отступ слева */
+background: 
+padding: 0 4px; /* Поля вокруг текста */
+padding-top: 4px;
+vertical-align: center;
+text-align: center;
+align-items: center;
+}
+ul.cent>li.float-left:hover , label.cur:hover , input:hover{
+	cursor: pointer;
+}
+input[type=radio]{
+  /* Hide original inputs */
+  visibility: hidden;
+  position: absolute;
+}
+input[type=radio] + label:before{
+  height:12px;
+  width:12px;
+  margin-right: 2px;
+  content: " ";
+  display:inline-block;
+  vertical-align: baseline;
+  border:1px solid #777;
+}
+input[type=radio]:checked + label:before{
+  background:#343a40;
+}
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    .dropdown-menu{
-        background-color:#343131;
-    }
-    a.dropdown-item:hover{
-      background-color: #343131;
-    }
-    li.nav-item>a.nav-link.disabled{
-        pointer-events: none;
-  cursor: default;
-    }
-    ul.pagination{
-    	padding-left:50%;
-    	width: 20%;
-    }
-    </style>
+/* CUSTOM RADIO AND CHECKBOX STYLES */
+input[type=radio] + label:before{
+  border-radius:50%;
+}
+input[type=radio] + label#id_filter:after{
+  display:inline-block;
+}
+input[type=radio] + label#is_desk:after{
+  display:inline-block;
+}
+</style>
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
-  </head>
-  <body>
+</head>
+<body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background:#2f2d31;">
   <a class="navbar-brand" href="/"><span style="color:#3CB371">F</span>
   <span style="color:#66CDAA">A</span>

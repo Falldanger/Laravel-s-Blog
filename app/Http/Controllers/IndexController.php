@@ -37,6 +37,9 @@ class IndexController extends Controller
     		$articles=$articles->orderBy(request('filter'), request('sort'));
     		$queries['sort']=request('sort');
     	}
+    	if(!(request()->has('sort'))||!(request()->has('filter'))){
+    		$articles=$articles->orderBy('id','desc');
+    	}
 
     	$articles=$articles->paginate(6)->appends($queries);
 

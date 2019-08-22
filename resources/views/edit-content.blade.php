@@ -15,7 +15,7 @@
 </div>
   <div class="container">
   
- 			<form method="post" name="upload" enctype="multipart/form-data" action="{{route('articleUpdate',['id'=>$post->id])}}">
+ 			<form method="POST" name="upload" enctype="multipart/form-data" action="{{route('articleUpdate',['id'=>$post->id])}}">
  			<div class="row">	
   				<div class="col-md-6" >
   					<label for="country">Country</label>

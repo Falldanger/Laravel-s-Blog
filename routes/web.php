@@ -35,7 +35,7 @@ Route::delete('page/delete/{article}',function(\App\Article $article){
 
 Route::get('article/{id}/edit','IndexController@edit')->name('articleEdit');
 
-Route::get('page/{post}','IndexController@update')->name('articleUpdate');
+Route::post('page/{post}','IndexController@update')->name('articleUpdate');
 
 Auth::routes();
 

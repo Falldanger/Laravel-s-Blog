@@ -100,8 +100,6 @@
   </div>
 </nav>
 
-
-
         <div style="margin-top:70px;">
             @yield('content')
         </div>

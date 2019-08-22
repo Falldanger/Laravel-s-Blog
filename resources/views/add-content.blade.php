@@ -13,7 +13,7 @@
 	<b style="color:red;"><?php if(isset($error)){echo $error;} ?></b>
 </div>
   <div class="container">
- 			<form method="post" name="upload" enctype="multipart/form-data" action="{{route('articleStore')}}">
+ 			<form method="POST" name="upload" enctype="multipart/form-data" action="{{route('articleStore')}}">
  			<div class="row">	
   				<div class="col-md-6" >
   					<label for="country">Country</label>

@@ -6,7 +6,7 @@
 
 <main role="main">
 
-  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <!-- Header page -->
   <div style="background-image:url(../img/index.jpg);background-repeat: no-repeat;
   background-size: cover;
   background-position: center; height: 280px;">
@@ -15,28 +15,39 @@
     </div>
   </div>
 
+  <!-- Content -->
+
   <div class="container" style="margin-top: 14px;">
 
-  <div class="col-md-6">
-    <p><b style="font-size: 18px;">Filter:</b>
-      <select id="cd-dropdown" class="cd-select" onchange="top.location=this.value" style="background-color: #343131; color:white; padding: 4px; border-radius: 4px; border-color: 1px solid black;">
-        <option class="cc" value="" selected="">Select your sort</option>
-        <option class="cc" value="/?filter=id">By Id</option>
-        <option class="cc" value="/?filter=views">By views</option>
-        <!-- <option class="cc" value="/?country">By country</option> -->
-        <option class="cc" value="/">Reset</option>
-      </select>
-    </p>
-  </div>
-  <div class="col-md-6 text-right">
-    <p><b style="font-size: 18px;">Sort:</b>
-    <a href="{{route('user.index',['filter'=>request('filter'), 'sort'=>'asc'])}}">Ascending</a>
-    <a href="{{route('user.index',['filter'=>request('filter'), 'sort'=>'desc'])}}">Descending</a>
-    </p>
-  </div>
-  
-    <!-- Example row of columns -->
-    <div class="row">
+  <!-- Filter -->
+
+  <div class="row">
+    <div class="col-md-12">
+      <form action="{{route('user.index',['filter'=>request('filter'), 'sort'=>request('sort')])}}" style="margin-left: -38px;">
+        <ul class="cent" id="ul-left">
+          <li class="float-left">
+            <label for="id_filter" style="padding-right: 10px; font-size: 17px; font-weight: 600;">Filter by: </label><input type="radio" name="filter" value="id" id="id_filter" checked="" {{request()->filter=='id'? 'checked' : ''}}><label for="id_filter" class="cur">Id</label>
+          </li>
+          <li class="float-left">
+            <input type="radio" name="filter" value="views" id="views_filter" {{request()->filter=='views'? 'checked' : ''}}><label for="views_filter" class="cur">Views</label>
+          </li>
+        </ul>
+        <ul class="cent" id="ul-right">
+          <li class="float-left">
+            <label for="is_desc" style="padding-left: 20px;
+        padding-right: 10px; font-size: 17px; font-weight: 600;">Sorting by: </label><input type="radio" name="sort" value="desc" id="is_desc" checked="" {{request()->sort=='desc'? 'checked' : ''}}><label for="is_desc" class="cur">Desc</label>
+          </li>
+          <li class="float-left">
+            <input type="radio" name="sort" value="asc" id="is_asc" {{request()->sort=='asc'? 'checked' : ''}}><label for="is_asc" class="cur">Asc</label>
+          </li>
+        </ul>
+        
+        <button type="submit" class="btn btn-secondary" style="padding:6px 10px; margin-left: 6px;">Sort</button>
+      </form>
+    </div>
+    
+    <!-- Articles -->
+    
     @foreach($articles as $article)
       <div class="col-md-4" style="margin: 10px 0;">
 
