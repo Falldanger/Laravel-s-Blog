@@ -35,7 +35,7 @@
         <ul class="cent" id="ul-right">
           <li class="float-left">
             <label for="is_desc" style="padding-left: 20px;
-        padding-right: 10px; font-size: 17px; font-weight: 600;">Sorting by: </label><input type="radio" name="sort" value="desc" id="is_desc" checked="" {{request()->sort=='desc'? 'checked' : ''}}><label for="is_desc" class="cur">Desc</label>
+        padding-right: 10px; font-size: 17px; font-weight: 600;">Sort by: </label><input type="radio" name="sort" value="desc" id="is_desc" checked="" {{request()->sort=='desc'? 'checked' : ''}}><label for="is_desc" class="cur">Desc</label>
           </li>
           <li class="float-left">
             <input type="radio" name="sort" value="asc" id="is_asc" {{request()->sort=='asc'? 'checked' : ''}}><label for="is_asc" class="cur">Asc</label>
