@@ -138,7 +138,7 @@ class IndexController extends Controller
 		    if ($type && ($type['mime'] != 'image/png' || 
 		    $type['mime'] != 'image/jpg' || $type['mime'] != 'image/jpeg')) {
 		        if ($_FILES['image']['size'] < 1024 * 10000) {
-		            $upload = 'C:\OSPanel\domains\minilaravel.loc\public\img\\'.$_FILES['image']['name'];
+		            $upload = '..\public\img\\'.$_FILES['image']['name'];
 		            $data=$request->all();
 			        $article = new Article;
 			        $article->fill($data);
